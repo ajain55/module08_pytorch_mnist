@@ -8,13 +8,22 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 import numpy as np
 import utilities
+import argparse
+
+# Initialize parser
+parser = argparse.ArgumentParser(description="Process arguments e, b, and i.")
+
+# Prompt user for additional input based on the arguments
+e = input(f"Please provide input for e (num_epochs): ")
+b = input(f"Please provide additional input for b (batch_size): ")
+l = input(f"Please provide additional input for l (learning_rate): ")
 # Device configuration (use GPU if available)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Hyperparameters
-num_epochs = 2  # Number of times the entire dataset is passed through the model
-batch_size = 1000  # Number of samples per batch to be passed through the model
-learning_rate = 0.001  # Step size for parameter updates
+num_epochs = int(e)  # Number of times the entire dataset is passed through the model
+batch_size = int(b)  # Number of samples per batch to be passed through the model
+learning_rate = float(l)  # Step size for parameter updates
 
 # MNIST dataset
 # Download & load the training dataset, applying a transformation to convert images to PyTorch tensors
